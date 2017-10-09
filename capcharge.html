@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>Kondensaotr Ladezeitrechner</title>
+</head>
+<body>
+<form id="frm1" onsubmit="myFunction()">
+<table>
+<tr><td>Eingangsspannung</td><td><input type="text" id="input_voltage"> V</td></tr>
+<tr><td>Threshold</td><td><input type="text" id="threshold_voltage"> V</td></tr>
+<tr><td>Kapazität</td><td><input type="text" id="capacity"> uF</td></tr>
+<tr><td>Vorwiederstand</td><td><input type="text" id="cahrge_resistor"> Ohm</td></tr>
+</table>
+</form>
+<br>
+  <button onclick="myFunction()">Berechnen</button>
+
+  
+  <div id="output"></div>
+
+<script>
+function myFunction() {
+    
+    val_v_in = Number(document.getElementById("input_voltage").value);
+    val_v_thr = Number(document.getElementById("threshold_voltage").value);
+    val_cap = Number(document.getElementById("capacity").value) * Math.pow(10,-6);
+    val_chg_res = Number(document.getElementById("cahrge_resistor").value);
+    
+    out_txt = "";
+    out_txt = "Tau = " + val_cap * val_chg_res  + " s<br>";
+    
+    var charge_time =  Math.log(1-(val_v_thr / val_v_in))*(-val_cap*val_chg_res);
+    
+    out_txt += "Ladezeit = " + charge_time  + " s<br>";
+    
+    
+    document.getElementById("output").innerHTML = out_txt;
+}
+</script>
+  
+
+</body> 
