@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!--
+     /* FHEM tablet ui */
+     /*
+     * UI builder framework for FHEM
+     *
+     * Version: 2.5.*
+     * URL: https://github.com/knowthelist/fhem-tablet-ui
+     *
+     * Copyright (c) 2015-2017 Mario Stephan <mstephan@shared-files.de>
+     * Under MIT License (http://www.opensource.org/licenses/mit-license.php)
+     *
+     * - create a new folder named 'tablet' in /<fhem-path>/www
+     * - copy all files incl. sub folders into /<fhem-path>/www/tablet
+     * - add 'define TABLETUI HTTPSRV ftui ./www/tablet Tablet' in fhem.cfg
+     * - Tadaaa! A new fhem ui in http://<fhem-url>:8083/fhem/tablet/
+     */
+    -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+    <!-- define your personal style here, it wont be overwritten  -->
+    <!-- link rel="stylesheet" href="css/fhem-green-ui.css" / -->
+    <!-- link rel="stylesheet" href="css/fhem-tablet-ui-user.css" / -->
+
+    <script src="js/fhem-tablet-ui.js" defer></script>
+
+
+    <!-- Remove this line to enable for usage with WebViewControl
+    <script defer>var wvcDevices = {'12345': 'Tablet'}; var wvcUserCssFile="webviewcontrol.css"</script>
+    <script src="../pgm2/cordova-2.3.0.js" defer></script>
+    <script src="../pgm2/webviewcontrol.js" defer></script>
+    <!-- End for WebViewControl -->
+
+    <title>FHEM-Tablet-UI</title>
+</head>
+
+<body>
+
+    <div class="gridster">
+        <ul>
+            <li data-row="1" data-col="1" data-sizey="1" data-sizex="3">
+                <header>Büro</header>
+                <div class="sheet">
+                    <div class="row">
+                        <div class="cell" data-type="thermostat" data-device="Bu_Heizung_Clima" data-get="desired-temp" data-set="desired-temp" data-temp="measured-temp" data-valve="ValvePosition" data-mode="controlMode" data-min="5" data-off="off" data-max="31" data-boost="31"></div>
+                        <div class="cell">
+                            <div data-type="switch" data-device="Bu_Licht" class="cell"></div>
+                            <div data-type="label" class="top-narrow  darker small">Licht</div>
+                        </div>
+                        <div class="cell">
+                            <div class="big" data-type="symbol" data-device="Bu_Fenster"></div>
+                            <div data-type="label" class="top-narrow  darker small">Fenster</div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li data-row="1" data-col="5" data-sizey="1" data-sizex="3">
+                <header>Bad</header>
+                <div class="sheet">
+                    <div class="row">
+                        <div class="cell" data-type="thermostat" data-device="Ba_Heizung_Clima" data-get="desired-temp" data-set="desired-temp" data-temp="measured-temp" data-valve="ValvePosition" data-mode="controlMode" data-min="5" data-off="off" data-max="31" data-boost="31"></div>
+                        <div class="cell">
+                            <div data-type="switch" data-device="Ba_Licht" class="cell"></div>
+                            <div data-type="label" class="top-narrow  darker small">Licht</div>
+                        </div>
+                        <div class="cell">
+                            <div class="big" data-type="symbol" data-device="Ba_Fenster"></div>
+                            <div data-type="label" class="top-narrow  darker small">Fenster</div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li data-row="1" data-col="4" data-sizey="1" data-sizex="1">
+                <header>Flur</header>
+                <div class="sheet">
+                    <div class="row">
+                        <div class="cell">
+                            <div data-type="switch" data-device="Fl_Licht" class="cell"></div>
+                            <div data-type="label" class="top-narrow  darker small">Licht</div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li data-row="2" data-col="1" data-sizey="1" data-sizex="4">
+                <header>Schlafzimmer</header>
+                <div class="sheet">
+                    <div class="row">
+                        <div class="cell" data-type="thermostat" data-device="Sz_Heizung_Clima" data-get="desired-temp" data-set="desired-temp" data-temp="measured-temp" data-valve="ValvePosition" data-mode="controlMode" data-min="5" data-off="off" data-max="31" data-boost="31"></div>
+                        <div class="cell">
+                            <div data-type="slider" data-device='Sz_Licht_Dim' data-get="pct" data-set="pct" data-min="0" data-max="100" class="cell" ></div>
+                            <div data-type="label" class="top-narrow  darker small">Licht</div>
+                        </div>
+                        <div class="cell">
+                            <div data-type="switch" data-device="Sz_Licht_Dim" class="cell"></div>
+                            <div data-type="label" class="top-narrow  darker small">Licht</div>
+                        </div>
+                        <div class="cell">
+                            <div class="big" data-type="symbol" data-device="Sz_Fenster"></div>
+                            <div data-type="label" class="top-narrow  darker small">Fenster</div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li data-row="3" data-col="1" data-sizey="1" data-sizex="4">
+                <header>Küche</header>
+                <div class="sheet">
+                    <div class="row">
+                        <div class="cell" data-type="thermostat" data-device="Ku_Heizung_Clima" data-get="desired-temp" data-set="desired-temp" data-temp="measured-temp" data-valve="ValvePosition" data-mode="controlMode" data-min="5" data-off="off" data-max="31" data-boost="31"></div>
+                        <div class="cell">
+                            <div data-type="slider" data-device='Ku_Licht_Dim' data-get="pct" data-set="pct" data-min="0" data-max="100" class="cell" ></div>
+                            <div data-type="label" class="top-narrow  darker small">Licht</div>
+                        </div>
+                        <div class="cell">
+                            <div data-type="switch" data-device="Ku_Licht_Dim" class="cell"></div>
+                            <div data-type="label" class="top-narrow  darker small">Licht</div>
+                        </div>
+                        <div class="cell">
+                            <div class="big" data-type="symbol" data-device="Ku_Fenster"></div>
+                            <div data-type="label" class="top-narrow  darker small">Fenster</div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li data-row="4" data-col="1" data-sizey="2" data-sizex="7">
+                <header>Wohnzimmer</header>
+                <div class="sheet">
+                    <div class="row">
+                        <div class="cell" data-type="thermostat" data-device="Wz_Heizung_Clima" data-get="desired-temp" data-set="desired-temp" data-temp="measured-temp" data-valve="ValvePosition" data-mode="controlMode" data-min="5" data-off="off" data-max="31" data-boost="31"></div>
+                        <div class="cell">
+                            <div data-type="slider" data-device='Wz_Licht' data-get="pct" data-set="pct" data-min="0" data-max="100" class="cell" ></div>
+                            <div data-type="label" class="top-narrow  darker small">Licht</div>
+                        </div>
+                        <div class="cell">
+                            <div data-type="switch" data-device="Wz_Licht" class="cell"></div>
+                            <div data-type="label" class="top-narrow  darker small">Licht</div>
+                        </div>
+                        <div class="cell">
+                            <div data-type="slider" data-device='Wz_Deckenfluter_Dim' data-get="pct" data-set="pct" data-min="0" data-max="100" class="cell" ></div>
+                            <div data-type="label" class="top-narrow  darker small">Licht</div>
+                        </div>
+                        <div class="cell">
+                            <div data-type="switch" data-device="Wz_Deckenfluter_Dim" class="cell"></div>
+                            <div data-type="label" class="top-narrow  darker small">Licht</div>
+                        </div>
+                        <div class="cell">
+                            <div data-type="switch" data-device="Wz_Saeule" class="cell"></div>
+                            <div data-type="label" class="top-narrow  darker small">Licht</div>
+                        </div>
+                        <div class="cell">
+                            <div class="big" data-type="symbol" data-device="Wz_Fenster1"></div>
+                            <div data-type="label" class="top-narrow  darker small">Fenster</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">
+                            <div data-type="colorwheel" data-device="Wz_Led_Saeule" data-get="rgb" data-set="rgb" class="small"></div>
+                            <div data-type="label" class="top-narrow  darker small">Säule</div>
+                        </div>
+                        <div class="cell">
+                            <div data-type="colorwheel" data-device="Wz_Led_Leinwand" data-get="rgb" data-set="rgb" class="small"></div>
+                            <div data-type="label" class="top-narrow  darker small">Leinwand</div>
+                        </div>
+                        <div class="cell">
+                            <div data-type="colorwheel" data-device="Wz_Led_Konsole" data-get="rgb" data-set="rgb" class="small"></div>
+                            <div data-type="label" class="top-narrow  darker small">Konsole</div>
+                        </div>
+                        <div class="cell">
+                            <div data-type="slider" data-device='Wz_Led_Vitrine' data-get="dim" data-set="dim" data-min="0" data-max="255" class="cell" ></div>
+                            <div data-type="label" class="top-narrow  darker small">Vitrine</div>
+                        </div>
+                        <div class="cell">
+                            <div data-type="slider" data-device='Wz_Led_Vader' data-get="dim" data-set="dim" data-min="0" data-max="255" class="cell" ></div>
+                            <div data-type="label" class="top-narrow  darker small">Vader</div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+</body>
+
+</html>
