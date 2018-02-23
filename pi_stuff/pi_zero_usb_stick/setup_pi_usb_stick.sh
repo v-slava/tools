@@ -20,4 +20,4 @@ sudo mkdir /mnt/usb_share
 echo "/piusb.bin /mnt/usb_share vfat users,umask=000 0 2" | sudo tee -a /etc/fstab
 sudo mount -a
 
-sudo modprobe g_mass_storage file=/piusb.bin stall=0 ro=1
+sudo modprobe g_mass_storage file=/piusb.bin stall=0 removable=1
