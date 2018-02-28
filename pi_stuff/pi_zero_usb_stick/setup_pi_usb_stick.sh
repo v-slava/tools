@@ -31,6 +31,9 @@ iface wlan0 inet dhcp
     wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
 EOF
 
+# Enable SSH-server (after reboot):
+touch /boot/ssh
+
 echo "dtoverlay=dwc2" | sudo tee -a /boot/config.txt
 
 #TODO
