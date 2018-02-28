@@ -6,6 +6,31 @@
 sudo apt-get update
 sudo apt-get upgrade
 
+# Configure WI-FI:
+if [ -z "$WIFI_SSID" ] || [ -z "$WIFI_PASSWORD" ]; then
+    echo -e "Error: please set both environment variables:\n\
+\$WIFI_SSID and \$WIFI_PASSWORD" 1>&2
+    exit 1
+fi
+
+cat << EOF | sudo tee -a /etc/wpa_supplicant/wpa_supplicant.conf
+network={
+  ssid="$WIFI_SSID"
+  psk="$WIFI_PASSWORD"
+  proto=RSN
+  key_mgmt=WPA-PSK
+  pairwise=CCMP
+  auth_alg=OPEN
+}
+EOF
+
+cat << EOF | sudo tee /etc/network/interfaces.d/wlan0
+auto wlan0
+allow-hotplug wlan0
+iface wlan0 inet dhcp
+    wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
+EOF
+
 echo "dtoverlay=dwc2" | sudo tee -a /boot/config.txt
 
 #TODO
