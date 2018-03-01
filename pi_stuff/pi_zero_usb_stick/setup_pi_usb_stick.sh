@@ -44,10 +44,21 @@ EOF
 echo "options g_mass_storage file=/piusb.bin stall=0 removable=1" | sudo tee /etc/modprobe.d/usb_storage.conf
 
 sudo dd bs=1M if=/dev/zero of=/piusb.bin count=4096
-sudo mkdosfs /piusb.bin -F 32 -I
-sudo mkdir /mnt/usb_share
+echo -e "o\nn\np\n\n\n\nt\nc\nw\n" | sudo fdisk /piusb.bin
+sudo apt-get install kpartx
+# losetup -l # print info about loop devices present
+sudo kpartx -a /piusb.bin
+sudo mkfs -t vfat -F 32 -n INSTALL /dev/mapper/loop0p1
 
-echo "/piusb.bin /mnt/usb_share vfat users,umask=000 0 2" | sudo tee -a /etc/fstab
+# Add some contents to partition on USB stick:
+sudo mkdir /mnt/usb_share
+sudo mount /dev/mapper/loop0p1 /mnt/usb_share/
+echo -e "Now spawn another shell, copy contents to USB stick\n\
+(in /mnt/usb_share/) and press enter here when done..."
+read
+sudo umount /mnt/usb_share
+
+sudo kpartx -d /piusb.bin
 
 # The following commands are not needed anymore (everything should work after reboot):
 sudo mount -a
