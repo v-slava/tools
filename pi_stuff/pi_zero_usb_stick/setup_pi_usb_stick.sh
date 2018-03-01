@@ -48,6 +48,7 @@ echo -e "o\nn\np\n\n\n\nt\nc\nw\n" | sudo fdisk /piusb.bin
 sudo apt-get install kpartx
 # losetup -l # print info about loop devices present
 sudo kpartx -a /piusb.bin
+sleep 1 # it takes some time to create partition mappings to loopback devices
 sudo mkfs -t vfat -F 32 -n INSTALL /dev/mapper/loop0p1
 
 # Add some contents to partition on USB stick:
